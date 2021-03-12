@@ -1,7 +1,7 @@
 import UIKit
 import VectorExtor
 
-class ViewController: UIViewController {
+class ZoomyViewController: UIViewController {
 
 	var lastSize: CGSize = .zero
 	let scrollView = UIScrollView()
@@ -41,6 +41,16 @@ class ViewController: UIViewController {
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
 		// detect device rotation
 		super.traitCollectionDidChange(previousTraitCollection)
+
+		let current = UITraitCollection.current
+
+		let currentHor = current.horizontalSizeClass
+		let currentVer = current.verticalSizeClass
+
+		let previousHor = previousTraitCollection?.horizontalSizeClass
+		let previousVer = previousTraitCollection?.verticalSizeClass
+
+		guard [currentHor, currentVer] != [previousHor, previousVer] else { return }
 
 		if let image = image {
 			setupMinZoom(for: image.size)
@@ -91,7 +101,7 @@ class ViewController: UIViewController {
 }
 
 
-extension ViewController: UIScrollViewDelegate {
+extension ZoomyViewController: UIScrollViewDelegate {
 	func viewForZooming(in scrollView: UIScrollView) -> UIView? {
 		imageView
 	}

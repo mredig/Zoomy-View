@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		339F022225FAD97C00BCD039 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 339F022125FAD97C00BCD039 /* Assets.xcassets */; };
 		339F022525FAD97C00BCD039 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 339F022325FAD97C00BCD039 /* LaunchScreen.storyboard */; };
 		339F022E25FAE0B600BCD039 /* UIView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339F022D25FAE0B600BCD039 /* UIView+Constraint.swift */; };
+		339F023225FAEDB800BCD039 /* VectorExtor in Frameworks */ = {isa = PBXBuildFile; productRef = 339F023125FAEDB800BCD039 /* VectorExtor */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				339F023225FAEDB800BCD039 /* VectorExtor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +88,9 @@
 			dependencies = (
 			);
 			name = "Image Zoom";
+			packageProductDependencies = (
+				339F023125FAEDB800BCD039 /* VectorExtor */,
+			);
 			productName = "Image Zoom";
 			productReference = 339F021525FAD97B00BCD039 /* Image Zoom.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +118,9 @@
 				Base,
 			);
 			mainGroup = 339F020C25FAD97B00BCD039;
+			packageReferences = (
+				339F023025FAEDB800BCD039 /* XCRemoteSwiftPackageReference "VectorExtor" */,
+			);
 			productRefGroup = 339F021625FAD97B00BCD039 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -345,6 +353,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		339F023025FAEDB800BCD039 /* XCRemoteSwiftPackageReference "VectorExtor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mredig/VectorExtor.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.1.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		339F023125FAEDB800BCD039 /* VectorExtor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 339F023025FAEDB800BCD039 /* XCRemoteSwiftPackageReference "VectorExtor" */;
+			productName = VectorExtor;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 339F020D25FAD97B00BCD039 /* Project object */;
 }

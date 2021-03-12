@@ -1,11 +1,5 @@
-//
-//  ViewController.swift
-//  Image Zoom
-//
-//  Created by Michael Redig on 3/11/21.
-//
-
 import UIKit
+import VectorExtor
 
 class ViewController: UIViewController {
 
@@ -30,6 +24,10 @@ class ViewController: UIViewController {
 		scrollView.maximumZoomScale = 3
 		scrollView.delegate = self
 
+		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTappedImage))
+		tapGesture.numberOfTapsRequired = 2
+		imageView.addGestureRecognizer(tapGesture)
+		imageView.isUserInteractionEnabled = true
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
@@ -50,16 +48,14 @@ class ViewController: UIViewController {
 	}
 
 	private func setupMinZoom(for imageSize: CGSize) {
-		let minWidthScale = view.bounds.width / imageSize.width
-		let minHeightScale = view.bounds.height / imageSize.height
-		let minScale = min(minWidthScale, minHeightScale)
+		let minScales = view.bounds.size / imageSize
+		let minScale = min(minScales.width, minScales.height)
 
 		scrollView.minimumZoomScale = minScale
 		scrollView.zoomScale = minScale
 
-		let width = imageSize.width * minScale
-		let height = imageSize.height * minScale
-		let newImageFrame = CGRect(origin: .zero, size: CGSize(width: width, height: height))
+		let scaledSize = imageSize * minScale
+		let newImageFrame = CGRect(origin: .zero, size: scaledSize)
 		imageView.frame = newImageFrame
 
 		centerImage()
@@ -68,10 +64,29 @@ class ViewController: UIViewController {
 	private func centerImage() {
 		let imageViewSize = imageView.frame.size
 		let scrollViewSize = view.frame.size
-		let vertPadding = max((scrollViewSize.height - imageViewSize.height) / 2, 0)
-		let horizPadding = max((scrollViewSize.width - imageViewSize.width) / 2, 0)
+
+		let paddings = (scrollViewSize - imageViewSize) / 2
+
+		let horizPadding = max(paddings.width, 0)
+		let vertPadding = max(paddings.height, 0)
 
 		scrollView.contentInset = UIEdgeInsets(horizontal: horizPadding, vertical: vertPadding)
+	}
+
+	@objc private func doubleTappedImage(_ sender: UITapGestureRecognizer) {
+		if scrollView.zoomScale == scrollView.minimumZoomScale {
+			let zoomRect = zoomRectangle(scale: scrollView.maximumZoomScale, center: sender.location(in: sender.view))
+			scrollView.zoom(to: zoomRect, animated: true)
+		} else {
+			scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)
+		}
+	}
+
+	private func zoomRectangle(scale: CGFloat, center: CGPoint) -> CGRect {
+		let zoomSize = imageView.frame.size / scale
+		let zoomOrigin = center - (center * scrollView.zoomScale)
+
+		return CGRect(origin: zoomOrigin, size: zoomSize)
 	}
 }
 

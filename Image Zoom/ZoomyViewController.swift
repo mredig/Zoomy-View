@@ -1,6 +1,7 @@
 import UIKit
 import VectorExtor
 
+/// The zoom calculations rely on the intrinsic content size of the passed in view. This is passively gained in a UIImageView from its UIImage.
 class ZoomyViewController: UIViewController {
 
 	var lastSize: CGSize = .zero
@@ -20,7 +21,6 @@ class ZoomyViewController: UIViewController {
 
 		scrollView.addSubview(imageView)
 
-		scrollView.backgroundColor = .systemPink
 		scrollView.maximumZoomScale = 3
 		scrollView.delegate = self
 
@@ -30,12 +30,18 @@ class ZoomyViewController: UIViewController {
 		imageView.isUserInteractionEnabled = true
 	}
 
+	// update views called here to ideally be ready before presentation
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
-		if let image = image {
-			setupMinZoom(for: image.size)
-		}
+		updateViews()
+	}
+
+	// failsafe. if viewwillappear call to updateviews didnt work, this should always have the correct view size
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+
+		updateViews()
 	}
 
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -52,6 +58,10 @@ class ZoomyViewController: UIViewController {
 
 		guard [currentHor, currentVer] != [previousHor, previousVer] else { return }
 
+		updateViews()
+	}
+
+	private func updateViews() {
 		if let image = image {
 			setupMinZoom(for: image.size)
 		}
@@ -97,6 +107,10 @@ class ZoomyViewController: UIViewController {
 		let zoomOrigin = center - (center * scrollView.zoomScale)
 
 		return CGRect(origin: zoomOrigin, size: zoomSize)
+	}
+
+	public func reset() {
+		updateViews()
 	}
 }
 

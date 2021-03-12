@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		334849C125FBD7AF005C0AC9 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334849C025FBD7AF005C0AC9 /* RootViewController.swift */; };
 		339F021925FAD97B00BCD039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339F021825FAD97B00BCD039 /* AppDelegate.swift */; };
 		339F021B25FAD97B00BCD039 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339F021A25FAD97B00BCD039 /* SceneDelegate.swift */; };
 		339F021D25FAD97B00BCD039 /* ZoomyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339F021C25FAD97B00BCD039 /* ZoomyViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		334849C025FBD7AF005C0AC9 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		339F021525FAD97B00BCD039 /* Image Zoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Image Zoom.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		339F021825FAD97B00BCD039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		339F021A25FAD97B00BCD039 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				339F021825FAD97B00BCD039 /* AppDelegate.swift */,
 				339F021A25FAD97B00BCD039 /* SceneDelegate.swift */,
 				339F021C25FAD97B00BCD039 /* ZoomyViewController.swift */,
+				334849C025FBD7AF005C0AC9 /* RootViewController.swift */,
 				339F022D25FAE0B600BCD039 /* UIView+Constraint.swift */,
 				339F021E25FAD97B00BCD039 /* Main.storyboard */,
 				339F022125FAD97C00BCD039 /* Assets.xcassets */,
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				334849C125FBD7AF005C0AC9 /* RootViewController.swift in Sources */,
 				339F021D25FAD97B00BCD039 /* ZoomyViewController.swift in Sources */,
 				339F021925FAD97B00BCD039 /* AppDelegate.swift in Sources */,
 				339F021B25FAD97B00BCD039 /* SceneDelegate.swift in Sources */,

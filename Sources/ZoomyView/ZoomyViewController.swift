@@ -113,7 +113,7 @@ public class ZoomyViewController: UIViewController {
 		let horizPadding = max(paddings.width, 0)
 		let vertPadding = max(paddings.height, 0)
 
-		scrollView.contentInset = UIEdgeInsets(horizontal: horizPadding, vertical: vertPadding)
+		scrollView.contentInset = UIEdgeInsets(top: vertPadding, left: horizPadding, bottom: vertPadding, right: horizPadding)
 	}
 
 	@objc private func doubleTappedImage(_ sender: UITapGestureRecognizer) {

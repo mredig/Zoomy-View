@@ -15,6 +15,16 @@ public class ZoomyViewController: UIViewController {
 
 	public var zoomOnDoubleTap = true
 
+	public var showScrollIndicators: Bool {
+		get {
+			scrollView.showsHorizontalScrollIndicator || scrollView.showsVerticalScrollIndicator
+		}
+		set {
+			scrollView.showsVerticalScrollIndicator = newValue
+			scrollView.showsHorizontalScrollIndicator = newValue
+		}
+	}
+
 	public init(zoomedView: UIView) {
 		self.zoomedView = zoomedView
 		super.init(nibName: nil, bundle: nil)
@@ -33,7 +43,10 @@ public class ZoomyViewController: UIViewController {
 
 		scrollView.addSubview(zoomedView)
 
+		// set default values
 		scrollView.maximumZoomScale = 3
+		showScrollIndicators = false
+
 		scrollView.delegate = self
 
 		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTappedImage))

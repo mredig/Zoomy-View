@@ -8,27 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		334849C125FBD7AF005C0AC9 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334849C025FBD7AF005C0AC9 /* RootViewController.swift */; };
+		334849CB25FBEBD6005C0AC9 /* ZoomyView in Frameworks */ = {isa = PBXBuildFile; productRef = 334849CA25FBEBD6005C0AC9 /* ZoomyView */; };
 		339F021925FAD97B00BCD039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339F021825FAD97B00BCD039 /* AppDelegate.swift */; };
 		339F021B25FAD97B00BCD039 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339F021A25FAD97B00BCD039 /* SceneDelegate.swift */; };
-		339F021D25FAD97B00BCD039 /* ZoomyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339F021C25FAD97B00BCD039 /* ZoomyViewController.swift */; };
 		339F022025FAD97B00BCD039 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 339F021E25FAD97B00BCD039 /* Main.storyboard */; };
 		339F022225FAD97C00BCD039 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 339F022125FAD97C00BCD039 /* Assets.xcassets */; };
 		339F022525FAD97C00BCD039 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 339F022325FAD97C00BCD039 /* LaunchScreen.storyboard */; };
-		339F022E25FAE0B600BCD039 /* UIView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339F022D25FAE0B600BCD039 /* UIView+Constraint.swift */; };
 		339F023225FAEDB800BCD039 /* VectorExtor in Frameworks */ = {isa = PBXBuildFile; productRef = 339F023125FAEDB800BCD039 /* VectorExtor */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		334849C025FBD7AF005C0AC9 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		334849C725FBEBBC005C0AC9 /* Image Zoom */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Image Zoom"; path = ..; sourceTree = "<group>"; };
 		339F021525FAD97B00BCD039 /* Image Zoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Image Zoom.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		339F021825FAD97B00BCD039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		339F021A25FAD97B00BCD039 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		339F021C25FAD97B00BCD039 /* ZoomyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomyViewController.swift; sourceTree = "<group>"; };
 		339F021F25FAD97B00BCD039 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		339F022125FAD97C00BCD039 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		339F022425FAD97C00BCD039 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		339F022625FAD97C00BCD039 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		339F022D25FAE0B600BCD039 /* UIView+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraint.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				334849CB25FBEBD6005C0AC9 /* ZoomyView in Frameworks */,
 				339F023225FAEDB800BCD039 /* VectorExtor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -43,11 +42,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		334849C925FBEBD6005C0AC9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		339F020C25FAD97B00BCD039 = {
 			isa = PBXGroup;
 			children = (
 				339F021725FAD97B00BCD039 /* Image Zoom */,
+				334849C725FBEBBC005C0AC9 /* Image Zoom */,
 				339F021625FAD97B00BCD039 /* Products */,
+				334849C925FBEBD6005C0AC9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,9 +72,7 @@
 			children = (
 				339F021825FAD97B00BCD039 /* AppDelegate.swift */,
 				339F021A25FAD97B00BCD039 /* SceneDelegate.swift */,
-				339F021C25FAD97B00BCD039 /* ZoomyViewController.swift */,
 				334849C025FBD7AF005C0AC9 /* RootViewController.swift */,
-				339F022D25FAE0B600BCD039 /* UIView+Constraint.swift */,
 				339F021E25FAD97B00BCD039 /* Main.storyboard */,
 				339F022125FAD97C00BCD039 /* Assets.xcassets */,
 				339F022325FAD97C00BCD039 /* LaunchScreen.storyboard */,
@@ -93,6 +99,7 @@
 			name = "Image Zoom";
 			packageProductDependencies = (
 				339F023125FAEDB800BCD039 /* VectorExtor */,
+				334849CA25FBEBD6005C0AC9 /* ZoomyView */,
 			);
 			productName = "Image Zoom";
 			productReference = 339F021525FAD97B00BCD039 /* Image Zoom.app */;
@@ -152,10 +159,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				334849C125FBD7AF005C0AC9 /* RootViewController.swift in Sources */,
-				339F021D25FAD97B00BCD039 /* ZoomyViewController.swift in Sources */,
 				339F021925FAD97B00BCD039 /* AppDelegate.swift in Sources */,
 				339F021B25FAD97B00BCD039 /* SceneDelegate.swift in Sources */,
-				339F022E25FAE0B600BCD039 /* UIView+Constraint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +375,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		334849CA25FBEBD6005C0AC9 /* ZoomyView */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ZoomyView;
+		};
 		339F023125FAEDB800BCD039 /* VectorExtor */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 339F023025FAEDB800BCD039 /* XCRemoteSwiftPackageReference "VectorExtor" */;

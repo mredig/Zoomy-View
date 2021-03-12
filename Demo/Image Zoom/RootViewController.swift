@@ -1,4 +1,5 @@
 import UIKit
+import ZoomyView
 
 class RootViewController: UIViewController {
 
@@ -14,7 +15,7 @@ class RootViewController: UIViewController {
 		let zoomyVC = ZoomyViewController(zoomedView: imageView)
 
 		view.addSubview(zoomyVC.view)
-		view.constrain(subview: zoomyVC.view)
+//		view.constrain(subview: zoomyVC.view)
 		addChild(zoomyVC)
 		zoomyVC.didMove(toParent: self)
 	}

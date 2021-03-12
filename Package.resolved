@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "VectorExtor",
+        "repositoryURL": "https://github.com/mredig/VectorExtor.git",
+        "state": {
+          "branch": null,
+          "revision": "7f85dee9ddbee6794d43a2824ec8febea0b272b1",
+          "version": "0.1.6"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -4,10 +4,25 @@ import VectorExtor
 /// The zoom calculations rely on the intrinsic content size of the passed in view. This is passively gained in a UIImageView from its UIImage.
 class ZoomyViewController: UIViewController {
 
-	var lastSize: CGSize = .zero
-	let scrollView = UIScrollView()
-	let imageView = UIImageView()
-	var image: UIImage?
+	private var lastSize: CGSize = .zero
+	private let scrollView = UIScrollView()
+	private let zoomedView: UIView
+
+	var maximumZoomScale: CGFloat {
+		get { scrollView.maximumZoomScale }
+		set { scrollView.maximumZoomScale = newValue }
+	}
+
+	var zoomOnDoubleTap = true
+
+	init(zoomedView: UIView) {
+		self.zoomedView = zoomedView
+		super.init(nibName: nil, bundle: nil)
+	}
+
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 
 	override func loadView() {
 		self.view = scrollView
@@ -16,18 +31,15 @@ class ZoomyViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		image = UIImage(named: "zhara")
-		imageView.image = image
-
-		scrollView.addSubview(imageView)
+		scrollView.addSubview(zoomedView)
 
 		scrollView.maximumZoomScale = 3
 		scrollView.delegate = self
 
 		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTappedImage))
 		tapGesture.numberOfTapsRequired = 2
-		imageView.addGestureRecognizer(tapGesture)
-		imageView.isUserInteractionEnabled = true
+		zoomedView.addGestureRecognizer(tapGesture)
+		zoomedView.isUserInteractionEnabled = true
 	}
 
 	// update views called here to ideally be ready before presentation
@@ -62,9 +74,7 @@ class ZoomyViewController: UIViewController {
 	}
 
 	private func updateViews() {
-		if let image = image {
-			setupMinZoom(for: image.size)
-		}
+		setupMinZoom(for: zoomedView.intrinsicContentSize)
 	}
 
 	private func setupMinZoom(for imageSize: CGSize) {
@@ -76,13 +86,13 @@ class ZoomyViewController: UIViewController {
 
 		let scaledSize = imageSize * minScale
 		let newImageFrame = CGRect(origin: .zero, size: scaledSize)
-		imageView.frame = newImageFrame
+		zoomedView.frame = newImageFrame
 
 		centerImage()
 	}
 
 	private func centerImage() {
-		let imageViewSize = imageView.frame.size
+		let imageViewSize = zoomedView.frame.size
 		let scrollViewSize = view.frame.size
 
 		let paddings = (scrollViewSize - imageViewSize) / 2
@@ -94,6 +104,7 @@ class ZoomyViewController: UIViewController {
 	}
 
 	@objc private func doubleTappedImage(_ sender: UITapGestureRecognizer) {
+		guard zoomOnDoubleTap else { return }
 		if scrollView.zoomScale == scrollView.minimumZoomScale {
 			let zoomRect = zoomRectangle(scale: scrollView.maximumZoomScale, center: sender.location(in: sender.view))
 			scrollView.zoom(to: zoomRect, animated: true)
@@ -103,7 +114,7 @@ class ZoomyViewController: UIViewController {
 	}
 
 	private func zoomRectangle(scale: CGFloat, center: CGPoint) -> CGRect {
-		let zoomSize = imageView.frame.size / scale
+		let zoomSize = zoomedView.frame.size / scale
 		let zoomOrigin = center - (center * scrollView.zoomScale)
 
 		return CGRect(origin: zoomOrigin, size: zoomSize)
@@ -117,7 +128,7 @@ class ZoomyViewController: UIViewController {
 
 extension ZoomyViewController: UIScrollViewDelegate {
 	func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-		imageView
+		zoomedView
 	}
 
 	func scrollViewDidZoom(_ scrollView: UIScrollView) {

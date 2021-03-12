@@ -2,7 +2,7 @@ import UIKit
 
 class RootViewController: UIViewController {
 
-	let image = UIImage(named: "zhara")
+	let image = UIImage(named: "patches")
 	let imageView = UIImageView()
 
 	override func viewDidLoad() {
@@ -11,7 +11,7 @@ class RootViewController: UIViewController {
 
 		view.backgroundColor = .systemYellow
 
-		let zoomyVC = ZoomyViewController()
+		let zoomyVC = ZoomyViewController(zoomedView: imageView)
 
 		view.addSubview(zoomyVC.view)
 		view.constrain(subview: zoomyVC.view)

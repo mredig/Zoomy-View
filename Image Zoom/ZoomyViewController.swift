@@ -2,20 +2,20 @@ import UIKit
 import VectorExtor
 
 /// The zoom calculations rely on the intrinsic content size of the passed in view. This is passively gained in a UIImageView from its UIImage.
-class ZoomyViewController: UIViewController {
+public class ZoomyViewController: UIViewController {
 
 	private var lastSize: CGSize = .zero
 	private let scrollView = UIScrollView()
-	private let zoomedView: UIView
+	public let zoomedView: UIView
 
-	var maximumZoomScale: CGFloat {
+	public var maximumZoomScale: CGFloat {
 		get { scrollView.maximumZoomScale }
 		set { scrollView.maximumZoomScale = newValue }
 	}
 
-	var zoomOnDoubleTap = true
+	public var zoomOnDoubleTap = true
 
-	init(zoomedView: UIView) {
+	public init(zoomedView: UIView) {
 		self.zoomedView = zoomedView
 		super.init(nibName: nil, bundle: nil)
 	}
@@ -24,11 +24,11 @@ class ZoomyViewController: UIViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	override func loadView() {
+	override public func loadView() {
 		self.view = scrollView
 	}
 
-	override func viewDidLoad() {
+	override public func viewDidLoad() {
 		super.viewDidLoad()
 
 		scrollView.addSubview(zoomedView)
@@ -43,20 +43,20 @@ class ZoomyViewController: UIViewController {
 	}
 
 	// update views called here to ideally be ready before presentation
-	override func viewWillAppear(_ animated: Bool) {
+	override public func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
 		updateViews()
 	}
 
 	// failsafe. if viewwillappear call to updateviews didnt work, this should always have the correct view size
-	override func viewDidAppear(_ animated: Bool) {
+	override public func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 
 		updateViews()
 	}
 
-	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+	override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
 		// detect device rotation
 		super.traitCollectionDidChange(previousTraitCollection)
 
@@ -127,11 +127,11 @@ class ZoomyViewController: UIViewController {
 
 
 extension ZoomyViewController: UIScrollViewDelegate {
-	func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+	public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
 		zoomedView
 	}
 
-	func scrollViewDidZoom(_ scrollView: UIScrollView) {
+	public func scrollViewDidZoom(_ scrollView: UIScrollView) {
 		centerImage()
 	}
 }

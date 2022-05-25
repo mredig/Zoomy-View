@@ -13,6 +13,8 @@ public class ZoomyViewController: UIViewController {
 		set { scrollView.maximumZoomScale = newValue }
 	}
 
+	public var doubleTapZoomScale: CGFloat?
+
 	public var zoomOnDoubleTap = true
 
 	public var showScrollIndicators: Bool {
@@ -25,8 +27,9 @@ public class ZoomyViewController: UIViewController {
 		}
 	}
 
-	public init(zoomedView: UIView) {
+	public init(zoomedView: UIView, doubleTapZoomScale: CGFloat? = nil) {
 		self.zoomedView = zoomedView
+		self.doubleTapZoomScale = doubleTapZoomScale
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -119,7 +122,7 @@ public class ZoomyViewController: UIViewController {
 	@objc private func doubleTappedImage(_ sender: UITapGestureRecognizer) {
 		guard zoomOnDoubleTap else { return }
 		if scrollView.zoomScale == scrollView.minimumZoomScale {
-			let zoomRect = zoomRectangle(scale: scrollView.maximumZoomScale, center: sender.location(in: sender.view))
+			let zoomRect = zoomRectangle(scale: doubleTapZoomScale ?? 0.5, center: sender.location(in: sender.view))
 			scrollView.zoom(to: zoomRect, animated: true)
 		} else {
 			scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)

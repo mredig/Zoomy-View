@@ -119,7 +119,7 @@ public class ZoomyViewController: UIViewController {
 	@objc private func doubleTappedImage(_ sender: UITapGestureRecognizer) {
 		guard zoomOnDoubleTap else { return }
 		if scrollView.zoomScale == scrollView.minimumZoomScale {
-			let zoomRect = zoomRectangle(scale: scrollView.maximumZoomScale, center: sender.location(in: sender.view))
+			let zoomRect = zoomRectangle(scale: 0.5, center: sender.location(in: sender.view))
 			scrollView.zoom(to: zoomRect, animated: true)
 		} else {
 			scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)
